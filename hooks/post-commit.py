@@ -5,6 +5,7 @@ import subprocess
 
 
 def run_command(command):
+    print(command)
     return subprocess.check_output(command.split()).rstrip()
 
 #get the top-level directory for this repo:
@@ -37,7 +38,7 @@ failed_path = os.path.join(tld, '.git/failed_gitshots')
 # filename is unix epoch time
 filename = str(calendar.timegm(datetime.now().utctimetuple())) + '.jpg'
 imgpath = os.path.abspath(os.path.expanduser(GITSHOTS_PATH + filename))
-img_command = GITSHOTS_IMAGE_CMD + ' ' + imgpath
+img_command = GITSHOTS_IMAGE_CMD + imgpath
 
 user = run_command('git config user.name')
 if not user:
