@@ -5,7 +5,7 @@ import subprocess
 
 
 def run_command(command):
-    return subprocess.check_output(command.split()).rstrip()
+    return subprocess.check_output(command).rstrip()
 
 #get the top-level directory for this repo:
 tld = run_command('git rev-parse --show-toplevel')
@@ -181,11 +181,11 @@ if __name__ == '__main__':
             print("Upload failed, saving {0}".format(gitshot['sha1']))
 
     # try to fork as soon as possible to not block shell
-    #try:
-    #    if os.fork():  # will not work on windows
-    #        sys.exit()
-    #except AttributeError:
-    #    pass
+    try:
+        if os.fork():  # will not work on windows
+            sys.exit()
+    except AttributeError:
+        pass
 
     gitshot = collect_stats()  # collect the stats
     if GITSHOTS_SERVER_URL:  # upload them
