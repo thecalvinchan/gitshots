@@ -24,7 +24,7 @@ GITSHOTS_SERVER_URL = os.getenv(
     'http://gitshots.com/api')
 GITSHOTS_IMAGE_CMD = os.getenv(
     'GITSHOTS_IMG_CMD',
-    'imagesnap -q -w 2 ')
+    'imagesnap -q ')
 LOCATION_URI = os.getenv('LOCATION_URI', '')
 # ensure directory exists
 if not os.path.exists(os.path.expanduser(GITSHOTS_PATH)):
